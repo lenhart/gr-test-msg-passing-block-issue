@@ -68,7 +68,8 @@ namespace gr {
     void testblock_impl::run() {
     	while (!d_finished) {
     		// do sth
-    		std::cout << "foo\n";
+    		//std::cout << "foo\n"; // this prints
+    	 	message_port_pub(pmt::mp(portname), pmt::mp("foo"));
     	}
     }
 

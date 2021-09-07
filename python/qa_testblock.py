@@ -37,16 +37,20 @@ class qa_testblock(gr_unittest.TestCase):
         msg_debug = blocks.message_debug()
         msg_debug_port = "store"
         
-        test_str = "foo"
-        test_src = periodic_msg_source(pmt.intern(test_str), 100, -1, True, False)
+        test_src = periodic_msg_source(pmt.intern("foo"), 100, 5, True, False)
         
         foo = test.testblock(1234)
         
         self.tb.msg_connect(test_src, "out", msg_debug, msg_debug_port)
-        self.tb.msg_connect(foo, "msg", msg_debug, msg_debug_port)
+        self.tb.msg_connect(foo, "msg", msg_debug, msg_debug_port)  # test terminates if commented out
        
         # set up fg
+        print("staring run")    # won't print
         self.tb.run()
+        print("finished run()")
+        msg_no = msg_debug.num_messages()
+        msg1 = pmt.to_python(msg_debug.get_message(1))
+        self.assertTrue(msg_no != 0, "received no message..")
         # check data
 
 
