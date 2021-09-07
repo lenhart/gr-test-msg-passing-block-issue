@@ -1,11 +1,12 @@
-This is the test-write-a-block package meant as a guide to building
-out-of-tree packages. To use the test blocks, the Python namespaces
-is in 'test', which is imported as:
+test module to reproduce problem unittesting the pure message block in order to ask on mailinglist.
 
-    import test
+problem: when running test bench (make test or ctest -V in the build folder) and custom block is connected, the test won't terminate.
 
-See the Doxygen documentation for details about the blocks available
-in this package. A quick listing of the details can be found in Python
-after importing by using:
-
-    help(test)
+steps to build: 
+```
+mkdir build
+cd build
+cmake ..
+make 
+make test
+```
