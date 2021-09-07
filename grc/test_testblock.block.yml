@@ -1,0 +1,22 @@
+id: test_testblock
+label: testblock
+category: '[Test]'
+
+templates:
+  imports: |-
+     import gnsssdr_mod
+     import pmt
+  make: test.testblock(${port})
+  
+parameters:
+- id: port
+  label: Port
+  dtype: int
+  default: '1233'
+  
+outputs:
+- domain: message
+  id: msg
+  optional: true
+
+file_format: 1
